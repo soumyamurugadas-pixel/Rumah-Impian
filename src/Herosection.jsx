@@ -32,7 +32,7 @@ export default function Herosection() {
           <img
             src="/Logo.svg"
             alt="Rumah Impian Logo"
-            className="h-8 md:h-9 w-auto"
+            className="h-8 md:h-9 w-auto ml-20"
           />
           <span className="font-semibold text-base md:text-lg tracking-wide">
             Rumah Impian
