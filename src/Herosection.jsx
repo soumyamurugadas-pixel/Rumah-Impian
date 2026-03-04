@@ -17,7 +17,6 @@ export default function Herosection() {
       />
 
       {/* ================= NAVBAR ================= */}
-      {/* Desktop unchanged */}
       <nav className="relative z-30 max-w-7xl mx-auto px-6 md:px-8 py-6 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <img
@@ -30,6 +29,7 @@ export default function Herosection() {
           </span>
         </div>
 
+        {/* Desktop Menu */}
         <ul className="hidden lg:flex gap-10 text-sm font-medium">
           <li className="font-semibold cursor-pointer">BERANDA</li>
           <li className="text-white/70 hover:text-white cursor-pointer">
@@ -50,13 +50,13 @@ export default function Herosection() {
           </button>
         </div>
 
+        {/* Hamburger */}
         <button className="lg:hidden" onClick={() => setIsOpen(true)}>
           <Menu size={26} />
         </button>
       </nav>
 
       {/* ================= HERO CONTENT ================= */}
-      {/* Desktop container untouched */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-8 flex items-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
         <div className="max-w-3xl text-center lg:text-left mx-auto lg:mx-0">
           <h1 className="font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
@@ -77,7 +77,6 @@ export default function Herosection() {
       </div>
 
       {/* ================= RIGHT IMAGE ================= */}
-      {/* Desktop behavior untouched */}
       <img
         src="/Banner2.png"
         alt="house"
@@ -85,17 +84,12 @@ export default function Herosection() {
           absolute
           right-0
           bottom-0
-          
-          /* Mobile + Tablet Fix */
           w-[150%] sm:w-[120%] md:w-full
           h-auto
           object-cover
-          
-          /* Desktop ORIGINAL behavior */
           lg:w-auto
           lg:h-[95%]
           lg:object-contain
-          
           z-10
         "
       />
@@ -106,11 +100,37 @@ export default function Herosection() {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
+        {/* Sidebar Header */}
         <div className="flex justify-between items-center px-6 py-5 border-b">
           <span className="font-bold text-xl">Menu</span>
           <button onClick={() => setIsOpen(false)}>
             <X size={22} />
           </button>
+        </div>
+
+        {/* Sidebar Content */}
+        <div className="flex flex-col px-6 py-6 gap-6 text-base font-medium">
+          <a href="#" onClick={() => setIsOpen(false)}>
+            BERANDA
+          </a>
+          <a href="#" onClick={() => setIsOpen(false)}>
+            LAYANAN
+          </a>
+          <a href="#" onClick={() => setIsOpen(false)}>
+            FITUR
+          </a>
+          <a href="#" onClick={() => setIsOpen(false)}>
+            KONTAK
+          </a>
+
+          <div className="mt-6 flex flex-col gap-4">
+            <button className="border border-[#147A55] py-2 rounded-md">
+              DAFTAR
+            </button>
+            <button className="bg-[#147A55] text-white py-2 rounded-md">
+              MASUK
+            </button>
+          </div>
         </div>
       </div>
     </section>
