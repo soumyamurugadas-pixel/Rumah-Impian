@@ -35,7 +35,7 @@ const Footersection = () => {
             </ul>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-6 text-center text-xs text-gray-400">
+          <div className=" mt-8 pt-6 text-center text-xs text-gray-400">
             © 2026 Rumah Impian. All rights reserved.
           </div>
         </div>
@@ -71,10 +71,6 @@ const Footersection = () => {
             Masuk
           </li>
         </ul>
-
-        {/* Divider */}
-        <div className="border-t border-gray-800 mb-6"></div>
-
         {/* Bottom Text */}
         <p className="text-center text-xs text-gray-400">
           © 2026 Rumah Impian. All rights reserved.

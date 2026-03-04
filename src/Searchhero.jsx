@@ -19,47 +19,47 @@ export default function Searchhero() {
 
   return (
     <>
-      {/* ================= MOBILE SECTION ================= */}
+      {/* ================= MOBILE ================= */}
       <section
-        className="md:hidden relative min-h-[75vh] bg-cover bg-center bg-no-repeat flex items-center"
+        className="md:hidden relative min-h-[75vh] bg-cover bg-center flex items-center"
         style={{ backgroundImage: "url('/livingroom-mobile.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Black opacity overlay */}
+        <div className="absolute inset-0"></div>
 
         <div className="relative z-10 w-full px-4">
           {/* Heading */}
-          <div className="text-center text-white mb-8">
-            <h1 className="text-2xl font-semibold mb-3">
+          <div className="text-center text-white mb-4">
+            <h1 className="text-2xl font-semibold mb-2">
               Temukan Rumah Impianmu
             </h1>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/80 mb-4">
               Hemat waktu dan biaya dengan ratusan pilihan rumah terbaik.
             </p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex w-full rounded-t-xl overflow-hidden shadow-lg">
-            {tabs.map((tab, index) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-3 text-sm font-semibold
-                  ${index !== 0 ? "border-l border-white/70" : ""}
-                  ${
-                    activeTab === tab
-                      ? "bg-white/60 text-[#0E7A4F]"
-                      : "bg-white/35 text-black"
-                  }
-                `}
-              >
-                {tab}
-              </button>
-            ))}
+          {/* Tabs wrapper with reduced width */}
+          <div className="flex justify-center ">
+            <div className="flex rounded-t-xl overflow-hidden shadow-lg w-3/4 max-w-xs">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 text-sm font-semibold
+                    ${index !== 0 ? "border-l border-white/60" : ""}
+                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/30 text-[#0E7A4F]"}
+                    py-2
+                  `}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Search Box */}
-          <div className="bg-white/60 rounded-b-xl shadow-xl flex flex-col overflow-hidden">
-            <div className="flex justify-between items-center px-4 py-4 border-b text-[#0E7A4F] text-sm">
+          <div className="bg-white/60 flex flex-col rounded-b-xl shadow-lg">
+            <div className="flex justify-between items-center px-4 py-3 border-b text-[#0E7A4F] text-sm">
               <div className="flex items-center gap-2">
                 <FaHome />
                 <span>Tipe Rumah</span>
@@ -67,7 +67,7 @@ export default function Searchhero() {
               <FaChevronDown />
             </div>
 
-            <div className="flex justify-between items-center px-4 py-4 border-b text-[#0E7A4F] text-sm">
+            <div className="flex justify-between items-center px-4 py-3 border-b text-[#0E7A4F] text-sm">
               <div className="flex items-center gap-2">
                 <FaMoneyBillWave />
                 <span>Range Harga</span>
@@ -76,19 +76,19 @@ export default function Searchhero() {
             </div>
 
             <div className="relative flex items-center border-b">
-              <FaSearch className="absolute left-4 text-[#0E7A4F]/70 text-sm" />
+              <FaSearch className="absolute left-3 text-[#0E7A4F]/70 text-sm" />
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={`Cari ${activeTab}`}
-                className="w-full pl-10 pr-4 py-4 text-sm outline-none bg-transparent text-[#0E7A4F]"
+                className="w-full pl-10 pr-4 py-3 text-sm outline-none bg-transparent text-[#0E7A4F]"
               />
             </div>
 
             <button
               onClick={handleSearch}
-              className="bg-[#0E7A4F] text-white py-4 text-base font-medium"
+              className="bg-[#0E7A4F] text-white py-3 text-base font-medium"
             >
               Cari
             </button>
@@ -96,48 +96,48 @@ export default function Searchhero() {
         </div>
       </section>
 
-      {/* ================= DESKTOP SECTION ================= */}
+      {/* ================= DESKTOP ================= */}
       <section
         className="hidden md:flex relative min-h-screen bg-cover bg-center items-center"
         style={{ backgroundImage: "url('/livingroom.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/10"></div>
+        {/* Black opacity overlay */}
+        <div className="absolute inset-0"></div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14">
           {/* Heading */}
-          <div className="text-center text-white mb-16">
-            <h1 className="text-5xl font-semibold mb-4">
+          <div className="text-center text-white mb-6 lg:mb-10">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
               Temukan Rumah Impianmu
             </h1>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-10">
               Sekarang Anda dapat menghemat semua hal stres, waktu, dan biaya
               tersembunyi, dengan ratusan rumah untuk anda.
             </p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex rounded-t-xl overflow-hidden shadow-lg w-fit">
-            {tabs.map((tab, index) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-10 py-4 font-semibold
-                  ${index !== 0 ? "border-l border-white/70" : ""}
-                  ${
-                    activeTab === tab
-                      ? "bg-white/70 text-[#0E7A4F]"
-                      : "bg-white/50 text-black"
-                  }
-                `}
-              >
-                {tab}
-              </button>
-            ))}
+          {/* Tabs wrapper */}
+          <div className="flex justify-start">
+            <div className="flex rounded-t-xl overflow-hidden shadow-lg w-1/2 max-w-md">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`flex-1 text-sm font-semibold
+                    ${index !== 0 ? "border-l border-white/60" : ""}
+                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/50 text-[#0E7A4F] hover:bg-white/70"}
+                    py-3
+                  `}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Search Box */}
-          <div className="bg-white/70 rounded-b-xl rounded-tr-xl shadow-2xl flex items-stretch overflow-hidden">
-            <div className="flex items-center justify-between px-8 py-6 border-r border-white/60 text-[#0E7A4F] w-72 cursor-pointer">
+          <div className="bg-white/70 flex flex-col sm:flex-row rounded-b-xl shadow-2xl w-full">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-5 sm:py-6 border-b sm:border-b-0 sm:border-r border-white/60 text-[#0E7A4F] w-full sm:w-72 cursor-pointer">
               <div className="flex items-center gap-2">
                 <FaHome />
                 <span>Tipe Rumah</span>
@@ -145,7 +145,7 @@ export default function Searchhero() {
               <FaChevronDown />
             </div>
 
-            <div className="flex items-center justify-between px-8 py-6 border-r border-white/60 text-[#0E7A4F] w-72 cursor-pointer">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-5 sm:py-6 border-b sm:border-b-0 sm:border-r border-white/60 text-[#0E7A4F] w-full sm:w-72 cursor-pointer">
               <div className="flex items-center gap-2">
                 <FaMoneyBillWave />
                 <span>Range Harga</span>
@@ -153,20 +153,20 @@ export default function Searchhero() {
               <FaChevronDown />
             </div>
 
-            <div className="relative flex-1 flex items-center">
-              <FaSearch className="absolute left-6 text-[#0E7A4F]/70" />
+            <div className="relative flex-1 flex items-center px-4 sm:px-6 py-5 sm:py-6">
+              <FaSearch className="absolute left-3 sm:left-6 text-[#0E7A4F]/70" />
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder={`Cari ${activeTab} berdasarkan lokasi, ID, Property`}
-                className="w-full pl-14 pr-6 py-6 outline-none bg-transparent text-[#0E7A4F]"
+                className="w-full pl-14 pr-4 outline-none bg-transparent text-[#0E7A4F]"
               />
             </div>
 
             <button
               onClick={handleSearch}
-              className="bg-[#0E7A4F] text-white px-12 py-6 text-lg font-medium"
+              className="bg-[#0E7A4F] text-white w-full sm:w-auto px-12 py-6 text-lg font-medium"
             >
               Cari
             </button>
