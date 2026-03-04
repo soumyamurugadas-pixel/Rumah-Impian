@@ -110,7 +110,7 @@ export default function Searchhero() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
               Temukan Rumah Impianmu
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto mb-10">
+            <p className="text-base sm:text-lg lg:text-[18px] text-white/80 max-w-3xl mx-auto mb-10">
               Sekarang Anda dapat menghemat semua hal stres, waktu, dan biaya
               tersembunyi, dengan ratusan rumah untuk anda.
             </p>
@@ -125,7 +125,7 @@ export default function Searchhero() {
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 text-sm font-semibold
                     ${index !== 0 ? "border-l border-white/60" : ""}
-                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/50 text-[#0E7A4F] hover:bg-white/70"}
+                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/50 text-[#000a06] hover:bg-white/70"}
                     py-3
                   `}
                 >

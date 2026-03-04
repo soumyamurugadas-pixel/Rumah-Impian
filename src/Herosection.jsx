@@ -13,34 +13,23 @@ export default function Herosection() {
       <img
         src="/Banner1.png"
         alt="left dots"
-        className="absolute top-0 left-0 w-40 sm:w-60 md:w-80 lg:w-72 2xl:w-96 opacity-20 z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-40 h-full sm:w-60 md:w-80 lg:w-72 2xl:w-96  z-10 pointer-events-none"
       />
 
       {/* ================= NAVBAR ================= */}
-      <nav
-        className="
-        relative z-30 
-        max-w-7xl 
-        2xl:max-w-425 
-        mx-auto 
-        px-4 sm:px-6 md:px-8 
-        py-6 
-        flex justify-between items-center
-      "
-      >
-        <div className="flex items-center gap-3">
+      <nav className="relative z-30 max-w-7xl 2xl:max-w-425 mx-auto px-4 sm:px-6 md:px-8 py-6 flex justify-between items-center">
+        <div className="flex items-center ml-6 gap-3">
           <img
             src="/Logo.svg"
             alt="Rumah Impian Logo"
-            className="h-8 md:h-9 w-auto ml-20"
+            className="h-8 md:h-9 w-auto md:ml-20"
           />
-          <span className="font-semibold text-base md:text-lg tracking-wide">
+          <span className="font-semibold text-[20px] md:text-lg tracking-wide">
             Rumah Impian
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex gap-10 text-sm font-medium">
+        <ul className="hidden lg:flex gap-10 text-[16px] font-normal">
           <li className="font-semibold cursor-pointer">BERANDA</li>
           <li className="text-white/70 hover:text-white cursor-pointer">
             LAYANAN
@@ -60,72 +49,63 @@ export default function Herosection() {
           </button>
         </div>
 
-        {/* Hamburger */}
         <button className="lg:hidden" onClick={() => setIsOpen(true)}>
           <Menu size={26} />
         </button>
       </nav>
 
-      {/* ================= HERO CONTENT ================= */}
-      <div
-        className="
-        relative z-20 
-        max-w-7xl 
-        2xl:max-w-425 
-        mx-auto 
-        px-4 sm:px-6 md:px-8 
-        flex items-center 
-        min-h-[70vh] 
-        lg:min-h-[80vh]
-      "
-      >
-        <div className="max-w-4xl text-center lg:text-left mx-auto lg:mx-0 lg:pl-16 xl:pl-24 2xl:pl-32">
-          <h1
-            className="font-semibold leading-tight 
-                       text-2xl sm:text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl sm:pt-0"
-          >
+      {/* ===== DESKTOP CONTENT ===== */}
+      <div className="hidden lg:flex relative z-20 max-w-7xl 2xl:max-w-425 mx-auto px-4 sm:px-6 md:px-8 items-center min-h-[80vh]">
+        <div className="max-w-4xl text-left mx-0 lg:pl-16 xl:pl-24 2xl:pl-32">
+          <h1 className="font-semibold leading-tight text-5xl 2xl:text-6xl">
             Membantu Temukan
             <br /> Rumah Impian.
           </h1>
 
-          <p className="mt-6 text-sm sm:text-base md:text-lg 2xl:text-xl text-white/80">
+          <p className="mt-6 text-lg 2xl:text-[17px] text-white/80">
             <span className="font-semibold text-white">Rumah Impian</span> hadir
             untuk temukan rumah terbaik untukmu, untuk di jual ataupun di sewa
             dengan sumber terpercaya.
           </p>
 
-          <button
-            className="mt-8 bg-white text-[#147A55] 
-                       px-8 py-4 
-                       2xl:px-10 2xl:py-5
-                       font-semibold 
-                       flex items-center gap-3 
-                       rounded-md 
-                       mx-auto lg:mx-0"
-          >
+          <button className="mt-8 bg-white text-[#147A55] px-8 py-4 2xl:px-10 2xl:py-5 font-semibold flex items-center gap-3 rounded-md">
             Temukan Rumah
             <ArrowRight size={20} />
           </button>
         </div>
       </div>
 
-      {/* ================= RIGHT IMAGE ================= */}
+      {/* ===== MOBILE CONTENT ===== */}
+      <div className="lg:hidden relative z-20 px-4 sm:px-6 pt-6 text-center">
+        <h1 className="font-semibold leading-tight text-2xl sm:text-3xl">
+          Membantu Temukan
+          <br /> Rumah Impian.
+        </h1>
+
+        <p className="mt-4 text-sm sm:text-base text-white/80">
+          <span className="font-semibold text-white">Rumah Impian</span> hadir
+          untuk temukan rumah terbaik untukmu, untuk di jual ataupun di sewa
+          dengan sumber terpercaya.
+        </p>
+
+        <button className="mt-6 bg-white text-[#147A55] px-8 py-3 font-semibold flex items-center gap-3 rounded-md mx-auto">
+          Temukan Rumah
+          <ArrowRight size={18} />
+        </button>
+
+        {/* MOBILE IMAGE */}
+        <img
+          src="/m_Banner2.png"
+          alt="house"
+          className="block w-screen max-w-none mt-6 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
+        />
+      </div>
+
+      {/* ===== DESKTOP RIGHT IMAGE ===== */}
       <img
         src="/Banner2.png"
         alt="house"
-        className="
-          absolute
-          right-0
-          bottom-0
-          w-full
-          sm:w-[90%]
-          md:w-[80%]
-          lg:w-auto
-          lg:h-[95%]
-          2xl:h-full
-          lg:object-contain
-          z-10
-        "
+        className="hidden lg:block absolute right-0 bottom-0 lg:h-[95%] 2xl:h-full lg:object-contain z-10"
       />
 
       {/* ================= MOBILE SIDEBAR ================= */}
