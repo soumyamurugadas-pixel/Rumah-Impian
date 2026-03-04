@@ -13,12 +13,21 @@ export default function Herosection() {
       <img
         src="/Banner1.png"
         alt="left dots"
-        className="absolute top-0 left-0 w-40 h-full sm:w-60 md:w-80 lg:w-72 2xl:w-96  z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-40 h-full sm:w-60 md:w-80 lg:w-72 2xl:w-96 z-10 pointer-events-none"
       />
 
       {/* ================= NAVBAR ================= */}
       <nav className="relative z-30 max-w-7xl 2xl:max-w-425 mx-auto px-4 sm:px-6 md:px-8 py-6 flex justify-between items-center">
-        <div className="flex items-center ml-6 gap-3">
+        {/* ===== MOBILE LOGO ===== */}
+        <div className="flex items-center gap-2 ml-3 lg:hidden">
+          <img src="/Logo.svg" alt="Rumah Impian Logo" className="h-7 w-auto" />
+          <span className="font-semibold text-[16px] tracking-wide">
+            Rumah Impian
+          </span>
+        </div>
+
+        {/* ===== DESKTOP LOGO ===== */}
+        <div className="hidden lg:flex items-center ml-6 gap-3">
           <img
             src="/Logo.svg"
             alt="Rumah Impian Logo"
@@ -82,13 +91,13 @@ export default function Herosection() {
           <br /> Rumah Impian.
         </h1>
 
-        <p className="mt-4 text-sm sm:text-base text-white/80">
+        <p className="mt-4 text-sm px-10  sm:text-base text-white/80">
           <span className="font-semibold text-white">Rumah Impian</span> hadir
           untuk temukan rumah terbaik untukmu, untuk di jual ataupun di sewa
           dengan sumber terpercaya.
         </p>
 
-        <button className="mt-6 bg-white text-[#147A55] px-8 py-3 font-semibold flex items-center gap-3 rounded-md mx-auto">
+        <button className="mt-6 bg-white text-[#147A55] px-4 py-2 font-semibold flex items-center gap-3 rounded-md mx-auto">
           Temukan Rumah
           <ArrowRight size={18} />
         </button>

@@ -47,7 +47,7 @@ export default function Searchhero() {
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 text-sm font-semibold
                     ${index !== 0 ? "border-l border-white/60" : ""}
-                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/30 text-[#0E7A4F]"}
+                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/30 text-[#000b07]"}
                     py-2
                   `}
                 >
