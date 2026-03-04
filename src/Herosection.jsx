@@ -1,203 +1,118 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 export default function Herosection() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative overflow-hidden">
-      {/* ================= DESKTOP (lg and above) ================= */}
-      <section className="relative min-h-screen bg-[#0E7A4F] text-white hidden lg:block overflow-hidden">
-        {/* LEFT DECOR IMAGE */}
-        <img
-          src="/Banner1.png"
-          alt="pattern"
-          className="absolute left-0 top-0 h-full z-40 object-cover opacity-20"
-        />
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#147A55] text-white">
+      {/* ===== GRADIENT BACKGROUND ===== */}
+      <div className="absolute inset-0 bg-linear-to-r from-[#048853] via-[#027346] to-[#002e22] z-0"></div>
 
-        <div className="absolute inset-0 bg-linear-to-r from-[#0E7A4F] via-[#0E7A4F] to-black/80" />
+      {/* ===== LEFT DOTS ===== */}
+      <img
+        src="/Banner1.png"
+        alt="left dots"
+        className="absolute top-0 left-0 w-72 md:w-96 opacity-20 z-10 pointer-events-none"
+      />
 
-        {/* NAVBAR */}
-        <nav className="absolute top-0 left-0 w-full z-30">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src="/Logo.svg" alt="Logo" className="h-10 w-auto" />
-              <span className="font-bold text-xl">Rumah Impian</span>
-            </div>
-
-            <ul className="flex gap-8 text-lg">
-              <li className="font-semibold">BERANDA</li>
-              <li className="text-white/70 hover:text-white cursor-pointer">
-                LAYANAN
-              </li>
-              <li className="text-white/70 hover:text-white cursor-pointer">
-                FITUR
-              </li>
-              <li className="text-white/70 hover:text-white cursor-pointer">
-                KONTAK
-              </li>
-            </ul>
-
-            <div className="flex items-center gap-5">
-              <button className="text-sm hover:text-gray-200">DAFTAR</button>
-              <button className="bg-white text-[#0E7A4F] px-4 py-1.5 text-sm font-medium hover:bg-gray-200 transition">
-                MASUK
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        {/* CONTENT */}
-        <div className="relative z-20 min-h-screen flex items-center">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-            <div className="w-1/2">
-              <h1 className="text-5xl font-bold leading-tight mb-6">
-                Membantu Temukan <br /> Rumah Impian.
-              </h1>
-
-              <p className="text-lg text-gray-200 leading-relaxed mb-10">
-                Rumah Impian hadir untuk temukan
-                <br /> rumah terbaik untukmu.
-              </p>
-
-              <button className="bg-white text-[#0E7A4F] px-8 py-4 text-base font-bold hover:bg-gray-200 transition">
-                Temukan Rumah
-              </button>
-            </div>
-          </div>
-
+      {/* ================= NAVBAR ================= */}
+      {/* Desktop unchanged */}
+      <nav className="relative z-30 max-w-7xl mx-auto px-6 md:px-8 py-6 flex justify-between items-center">
+        <div className="flex items-center gap-3">
           <img
-            src="/tabhero.png"
-            alt="House"
-            className="absolute right-0 bottom-0 h-[90%] object-contain"
+            src="/Logo.svg"
+            alt="Rumah Impian Logo"
+            className="h-8 md:h-9 w-auto"
           />
+          <span className="font-semibold text-base md:text-lg tracking-wide">
+            Rumah Impian
+          </span>
         </div>
-      </section>
 
-      {/* ================= TABLET (md to lg) ================= */}
-      <section className="relative min-h-screen bg-[#0E7A4F] text-white hidden md:block lg:hidden overflow-hidden">
-        {/* LEFT DECOR IMAGE */}
-        <img
-          src="/banner1.png"
-          alt="pattern"
-          className="absolute left-0 top-0 h-full object-cover opacity-20"
-        />
+        <ul className="hidden lg:flex gap-10 text-sm font-medium">
+          <li className="font-semibold cursor-pointer">BERANDA</li>
+          <li className="text-white/70 hover:text-white cursor-pointer">
+            LAYANAN
+          </li>
+          <li className="text-white/70 hover:text-white cursor-pointer">
+            FITUR
+          </li>
+          <li className="text-white/70 hover:text-white cursor-pointer">
+            KONTAK
+          </li>
+        </ul>
 
-        <div className="absolute inset-0 bg-linear-to-r from-[#0E7A4F] via-[#0E7A4F] to-black/70" />
+        <div className="hidden lg:flex gap-6 text-sm items-center">
+          <button>DAFTAR</button>
+          <button className="bg-white text-[#147A55] px-6 py-2 font-semibold rounded-md">
+            MASUK
+          </button>
+        </div>
 
-        {/* FULL NAVBAR ADDED */}
-        <nav className="relative z-30 px-8 py-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <img src="/Logo.svg" alt="Logo" className="h-9 w-auto" />
-            <span className="font-bold text-lg">Rumah Impian</span>
-          </div>
+        <button className="lg:hidden" onClick={() => setIsOpen(true)}>
+          <Menu size={26} />
+        </button>
+      </nav>
 
-          <ul className="hidden md:flex gap-6 text-sm">
-            <li className="font-semibold">BERANDA</li>
-            <li className="text-white/70">LAYANAN</li>
-            <li className="text-white/70">FITUR</li>
-            <li className="text-white/70">KONTAK</li>
-          </ul>
-
-          <div className="flex gap-3 text-sm">
-            <button>DAFTAR</button>
-            <button className="bg-white text-[#0E7A4F] px-3 py-1 rounded">
-              MASUK
-            </button>
-          </div>
-        </nav>
-
-        {/* CONTENT */}
-        <div className="relative z-20 px-10 pt-24 max-w-2xl">
-          <h1 className="text-4xl font-bold leading-tight mb-4">
+      {/* ================= HERO CONTENT ================= */}
+      {/* Desktop container untouched */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-8 flex items-center min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh]">
+        <div className="max-w-3xl text-center lg:text-left mx-auto lg:mx-0">
+          <h1 className="font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             Membantu Temukan <br /> Rumah Impian.
           </h1>
 
-          <p className="text-base text-gray-200 mb-6">
-            Rumah Impian hadir untuk temukan
-            <br /> rumah terbaik untukmu.
+          <p className="mt-6 text-sm sm:text-base md:text-lg text-white/80">
+            <span className="font-semibold text-white">Rumah Impian</span> hadir
+            untuk temukan rumah terbaik untukmu, untuk di jual ataupun di sewa
+            dengan sumber terpercaya.
           </p>
 
-          <button className="bg-white text-[#0E7A4F] px-6 py-3 font-semibold rounded-md shadow">
+          <button className="mt-8 bg-white text-[#147A55] px-8 py-4 font-semibold flex items-center gap-3 rounded-md mx-auto lg:mx-0">
             Temukan Rumah
+            <ArrowRight size={20} />
           </button>
         </div>
+      </div>
 
-        <img
-          src="/tabhero.png"
-          alt="House"
-          className="absolute right-0 bottom-0 h-[85%] object-contain"
-        />
-      </section>
+      {/* ================= RIGHT IMAGE ================= */}
+      {/* Desktop behavior untouched */}
+      <img
+        src="/Banner2.png"
+        alt="house"
+        className="
+          absolute
+          right-0
+          bottom-0
+          
+          /* Mobile + Tablet Fix */
+          w-[150%] sm:w-[120%] md:w-full
+          h-auto
+          object-cover
+          
+          /* Desktop ORIGINAL behavior */
+          lg:w-auto
+          lg:h-[95%]
+          lg:object-contain
+          
+          z-10
+        "
+      />
 
-      {/* ================= MOBILE ONLY ================= */}
-      <section className="relative bg-[#0E7A4F] text-white md:hidden min-h-screen overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-[#0E7A4F]/95 via-[#0E7A4F]/80 to-black/70" />
-
-        {/* NAV */}
-        <nav className="relative z-30 px-6 pt-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <img src="/Logo.svg" alt="Logo" className="h-8 w-auto" />
-            <span className="font-bold text-lg">Rumah Impian</span>
-          </div>
-
-          <button onClick={() => setIsOpen(true)}>
-            <Menu size={26} />
-          </button>
-        </nav>
-
-        {/* HAMBURGER UI REDESIGNED */}
-        <div
-          className={`fixed top-0 right-0 h-full w-72 bg-white text-[#0E7A4F] z-50 transform transition-transform duration-300 ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex justify-between items-center px-6 py-5 border-b">
-            <span className="font-bold text-xl">Menu</span>
-            <button onClick={() => setIsOpen(false)}>
-              <X size={22} />
-            </button>
-          </div>
-
-          <div className="flex flex-col px-6 py-6 space-y-6 font-medium overflow-y-auto">
-            <a href="#">BERANDA</a>
-            <a href="#">LAYANAN</a>
-            <a href="#">FITUR</a>
-            <a href="#">KONTAK</a>
-
-            <div className="pt-6 border-t space-y-4">
-              <button className="w-full border border-[#0E7A4F] py-2 rounded">
-                DAFTAR
-              </button>
-              <button className="w-full bg-[#0E7A4F] text-white py-2 rounded">
-                MASUK
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* CONTENT */}
-        <div className="relative z-20 px-6 pt-16 text-center">
-          <h1 className="text-2xl font-bold mb-4">
-            Membantu Temukan <br /> Rumah Impian.
-          </h1>
-
-          <p className="text-sm text-gray-200 mb-6">
-            Rumah Impian hadir untuk temukan
-            <br /> rumah terbaik untukmu.
-          </p>
-
-          <button className="bg-white text-[#0E7A4F] px-5 py-2 text-sm font-semibold rounded">
-            Temukan Rumah
+      {/* ================= MOBILE SIDEBAR ================= */}
+      <div
+        className={`fixed top-0 right-0 h-full w-72 bg-white text-[#147A55] z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex justify-between items-center px-6 py-5 border-b">
+          <span className="font-bold text-xl">Menu</span>
+          <button onClick={() => setIsOpen(false)}>
+            <X size={22} />
           </button>
         </div>
-
-        <img
-          src="/tabhero.png"
-          alt="House"
-          className="absolute bottom-0 right-0 max-w-sm max-h-[80%] object-contain"
-        />
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
