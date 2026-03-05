@@ -10,169 +10,216 @@ export default function Searchhero() {
   const [activeTab, setActiveTab] = useState("Jual");
   const [searchText, setSearchText] = useState("");
 
-  const handleSearch = () => {
-    console.log("Tab:", activeTab);
-    console.log("Search:", searchText);
-  };
+  const [showType, setShowType] = useState(false);
+  const [showPrice, setShowPrice] = useState(false);
+
+  const [selectedType, setSelectedType] = useState("Tipe Rumah");
+
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   const tabs = ["Jual", "Sewa", "Property Baru"];
 
+  const tipeOptions = [
+    "Rumah Minimalis",
+    "Rumah Modern",
+    "Rumah Mewah",
+    "Apartemen",
+    "Villa",
+  ];
+
+  const priceOptions = [
+    "$60k",
+    "$180k",
+    "$350k",
+    "$500k",
+    "$600k",
+    "$700k",
+    "$900k",
+    "$1.00m",
+    "$1.20m",
+  ];
+
+  const priceLabel =
+    minPrice || maxPrice
+      ? `${minPrice || "No Min"} - ${maxPrice || "No Max"}`
+      : "Range Harga";
+
+  const handleSearch = () => {
+    console.log(activeTab, selectedType, minPrice, maxPrice, searchText);
+  };
+
+  const handlePriceSelect = (price) => {
+    if (!minPrice) {
+      setMinPrice(price);
+    } else if (!maxPrice) {
+      setMaxPrice(price);
+    } else {
+      setMinPrice(price);
+      setMaxPrice("");
+    }
+  };
+
   return (
-    <>
-      {/* ================= MOBILE ================= */}
-      <section
-        className="md:hidden relative min-h-[75vh] bg-cover bg-center flex items-center"
-        style={{ backgroundImage: "url('/livingroom-mobile.jpg')" }}
-      >
-        {/* Black opacity overlay */}
-        <div className="absolute inset-0"></div>
+    <section
+      className="relative min-h-screen flex items-center justify-center bg-cover bg-center px-4 sm:px-8 lg:px-12"
+      style={{ backgroundImage: "url('/livingroom.jpg')" }}
+    >
+      <div className="relative z-10 w-full max-w-7xl">
+        {/* Heading */}
+        <div className="text-center text-white mb-10">
+          <h1 className="font-semibold leading-tight text-[clamp(28px,5vw,64px)] mb-4">
+            Temukan Rumah Impianmu
+          </h1>
 
-        <div className="relative z-10 w-full px-4">
-          {/* Heading */}
-          <div className="text-center text-white mb-4">
-            <h1 className="text-2xl font-semibold mb-2">
-              Temukan Rumah Impianmu
-            </h1>
-            <p className="text-sm text-white/80 mb-4">
-              Hemat waktu dan biaya dengan ratusan pilihan rumah terbaik.
-            </p>
+          <p className="text-white/80 max-w-2xl mx-auto text-[clamp(14px,2vw,18px)]">
+            Sekarang Anda dapat menghemat semua hal stres, waktu, dan biaya
+            tersembunyi dengan ratusan rumah pilihan.
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex justify-center md:justify-start">
+          <div className="flex rounded-t-xl overflow-hidden shadow-lg w-full max-w-md">
+            {tabs.map((tab, index) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`flex-1 py-3 text-sm font-semibold
+                ${index !== 0 ? "border-l border-white/60" : ""}
+                ${
+                  activeTab === tab
+                    ? "bg-white text-[#0E7A4F]"
+                    : "bg-white/70 text-black"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
+        </div>
 
-          {/* Tabs wrapper with reduced width */}
-          <div className="flex justify-center ">
-            <div className="flex rounded-t-xl overflow-hidden shadow-lg w-3/4 max-w-xs">
-              {tabs.map((tab, index) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 text-sm font-semibold
-                    ${index !== 0 ? "border-l border-white/60" : ""}
-                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/30 text-[#000b07]"}
-                    py-2
-                  `}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Search Box */}
-          <div className="bg-white/60 flex flex-col rounded-b-xl shadow-lg">
-            <div className="flex justify-between items-center px-4 py-3 border-b text-[#0E7A4F] text-sm">
+        {/* Search Box */}
+        <div className="bg-white/90 flex flex-col md:flex-row rounded-b-xl shadow-xl w-full relative">
+          {/* Property Type */}
+          <div className="relative md:w-64">
+            <div
+              onClick={() => {
+                setShowType(!showType);
+                setShowPrice(false);
+              }}
+              className="flex items-center justify-between px-5 py-4 text-[#0E7A4F] cursor-pointer"
+            >
               <div className="flex items-center gap-2">
                 <FaHome />
-                <span>Tipe Rumah</span>
+                <span className="text-[15px] font-medium">{selectedType}</span>
               </div>
-              <FaChevronDown />
-            </div>
 
-            <div className="flex justify-between items-center px-4 py-3 border-b text-[#0E7A4F] text-sm">
-              <div className="flex items-center gap-2">
-                <FaMoneyBillWave />
-                <span>Range Harga</span>
-              </div>
-              <FaChevronDown />
-            </div>
-
-            <div className="relative flex items-center border-b">
-              <FaSearch className="absolute left-3 text-[#0E7A4F]/70 text-sm" />
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder={`Cari ${activeTab}`}
-                className="w-full pl-10 pr-4 py-3 text-sm outline-none bg-transparent text-[#0E7A4F]"
+              <FaChevronDown
+                className={`transition-transform ${
+                  showType ? "rotate-180" : ""
+                }`}
               />
             </div>
 
-            <button
-              onClick={handleSearch}
-              className="bg-[#0E7A4F] text-white py-3 text-base font-medium"
-            >
-              Cari
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= DESKTOP ================= */}
-      <section
-        className="hidden md:flex relative min-h-screen bg-cover bg-center items-center"
-        style={{ backgroundImage: "url('/livingroom.jpg')" }}
-      >
-        {/* Black opacity overlay */}
-        <div className="absolute inset-0"></div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-14">
-          {/* Heading */}
-          <div className="text-center text-white mb-6 lg:mb-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
-              Temukan Rumah Impianmu
-            </h1>
-            <p className="text-base sm:text-lg lg:text-[18px] text-white/80 max-w-3xl mx-auto mb-10">
-              Sekarang Anda dapat menghemat semua hal stres, waktu, dan biaya
-              tersembunyi, dengan ratusan rumah untuk anda.
-            </p>
-          </div>
-
-          {/* Tabs wrapper */}
-          <div className="flex justify-start">
-            <div className="flex rounded-t-xl overflow-hidden shadow-lg w-1/2 max-w-md">
-              {tabs.map((tab, index) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 text-sm font-semibold
-                    ${index !== 0 ? "border-l border-white/60" : ""}
-                    ${activeTab === tab ? "bg-white/70 text-[#0E7A4F]" : "bg-white/50 text-[#000a06] hover:bg-white/70"}
-                    py-3
-                  `}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Search Box */}
-          <div className="bg-white/70 flex flex-col sm:flex-row rounded-b-xl shadow-2xl w-full">
-            <div className="flex items-center justify-between px-4 sm:px-6 py-5 sm:py-6 border-b sm:border-b-0 sm:border-r border-white/60 text-[#0E7A4F] w-full sm:w-72 cursor-pointer">
-              <div className="flex items-center gap-2">
-                <FaHome />
-                <span>Tipe Rumah</span>
+            {showType && (
+              <div className="absolute left-0 top-full w-full bg-white shadow-xl rounded-b-lg overflow-hidden z-40">
+                {tipeOptions.map((option) => (
+                  <div
+                    key={option}
+                    onClick={() => {
+                      setSelectedType(option);
+                      setShowType(false);
+                    }}
+                    className="px-5 py-3 text-[15px] font-medium text-[#0E7A4F] hover:bg-gray-100 hover:pl-6 transition-all duration-200 cursor-pointer"
+                  >
+                    {option}
+                  </div>
+                ))}
               </div>
-              <FaChevronDown />
-            </div>
+            )}
+          </div>
 
-            <div className="flex items-center justify-between px-4 sm:px-6 py-5 sm:py-6 border-b sm:border-b-0 sm:border-r border-white/60 text-[#0E7A4F] w-full sm:w-72 cursor-pointer">
+          {/* Price */}
+          <div className="relative md:w-64 border-x border-white">
+            <div
+              onClick={() => {
+                setShowPrice(!showPrice);
+                setShowType(false);
+              }}
+              className="flex items-center justify-between px-5 py-4 text-[#0E7A4F] cursor-pointer"
+            >
               <div className="flex items-center gap-2">
                 <FaMoneyBillWave />
-                <span>Range Harga</span>
+                <span className="text-[15px] font-medium">{priceLabel}</span>
               </div>
-              <FaChevronDown />
-            </div>
 
-            <div className="relative flex-1 flex items-center px-4 sm:px-6 py-5 sm:py-6">
-              <FaSearch className="absolute left-3 sm:left-6 text-[#0E7A4F]/70" />
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder={`Cari ${activeTab} berdasarkan lokasi, ID, Property`}
-                className="w-full pl-14 pr-4 outline-none bg-transparent text-[#0E7A4F]"
+              <FaChevronDown
+                className={`transition-transform ${
+                  showPrice ? "rotate-180" : ""
+                }`}
               />
             </div>
 
-            <button
-              onClick={handleSearch}
-              className="bg-[#0E7A4F] text-white w-full sm:w-auto px-12 py-6 text-lg font-medium"
-            >
-              Cari
-            </button>
+            {showPrice && (
+              <div className="absolute left-0 top-full w-full bg-white shadow-xl rounded-b-lg p-4 z-40">
+                {/* Min Max */}
+                <div className="flex gap-3 mb-4">
+                  <input
+                    type="text"
+                    placeholder="Min"
+                    value={minPrice}
+                    readOnly
+                    className="border p-2 w-1/2 rounded text-[14px] font-medium text-[#0E7A4F]"
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Max"
+                    value={maxPrice}
+                    readOnly
+                    className="border p-2 w-1/2 rounded text-[14px] font-medium text-[#0E7A4F]"
+                  />
+                </div>
+
+                {/* Price List */}
+                <div className="max-h-48 overflow-y-auto">
+                  {priceOptions.map((price) => (
+                    <div
+                      key={price}
+                      onClick={() => handlePriceSelect(price)}
+                      className="px-4 py-2 text-[14px] font-medium text-[#0E7A4F] hover:bg-gray-100 hover:pl-6 transition-all duration-200 cursor-pointer"
+                    >
+                      {price}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* Search */}
+          <div className="flex-1 flex items-center px-5 py-4 relative">
+            <FaSearch className="absolute left-5 text-[#0E7A4F]/70" />
+
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder={`Cari ${activeTab} berdasarkan lokasi, ID, Property`}
+              className="w-full pl-8 outline-none text-[15px] rounded-md px-3 py-2 placeholder:text-[#0E7A4F]/70"
+            />
+          </div>
+
+          {/* Button */}
+          <button
+            onClick={handleSearch}
+            className="bg-[#0E7A4F] text-white px-8 py-4 font-medium text-[15px]"
+          >
+            Cari
+          </button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

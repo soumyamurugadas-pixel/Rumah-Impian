@@ -124,9 +124,9 @@ const Slidersection = () => {
   };
 
   return (
-    <>
+    <div id="fitur" className="scroll-mt-28">
       {/* ================= DESKTOP SECTION ================= */}
-      <section className="hidden md:block bg-[#E8F1EC] pb-25 ">
+      <section className="hidden md:block bg-[#E8F1EC] pb-24">
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
@@ -192,7 +192,7 @@ const Slidersection = () => {
       </section>
 
       {/* ================= MOBILE SECTION ================= */}
-      <section className="md:hidden bg-[#E8F1EC] pt-0 pb-20 px-4">
+      <section className="md:hidden bg-[#E8F1EC] pb-20 px-4">
         <h2 className="text-3xl font-semibold text-[#11875D] mb-6 text-center">
           Fitur Rumah
         </h2>
@@ -244,7 +244,7 @@ const Slidersection = () => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

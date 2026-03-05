@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footersection = () => {
   return (
     <>
@@ -18,24 +20,29 @@ const Footersection = () => {
             {/* Navigation */}
             <ul className="flex gap-8 text-sm">
               <li className="cursor-pointer hover:text-gray-400 transition">
-                Beranda
+                <a href="#beranda">Beranda</a>
               </li>
+
               <li className="cursor-pointer hover:text-gray-400 transition">
-                Layanan
+                <a href="#layanan">Layanan</a>
               </li>
+
               <li className="cursor-pointer hover:text-gray-400 transition">
-                Fitur
+                <a href="#fitur">Fitur</a>
               </li>
+
               <li className="cursor-pointer hover:text-gray-400 transition">
-                Kontak
+                <a href="#kontak">Kontak</a>
               </li>
+
+              {/* MASUK LINK */}
               <li className="cursor-pointer hover:text-gray-400 transition">
-                Masuk
+                <Link to="/login">Masuk</Link>
               </li>
             </ul>
           </div>
 
-          <div className=" mt-8 pt-6 text-center text-xs text-gray-400">
+          <div className="mt-8 pt-6 text-center text-xs text-gray-400">
             © 2026 Rumah Impian. All rights reserved.
           </div>
         </div>
@@ -56,21 +63,27 @@ const Footersection = () => {
         {/* Vertical Navigation */}
         <ul className="flex flex-col items-center gap-4 text-sm mb-8">
           <li className="cursor-pointer hover:text-gray-400 transition">
-            Beranda
+            <a href="#beranda">Beranda</a>
           </li>
+
           <li className="cursor-pointer hover:text-gray-400 transition">
-            Layanan
+            <a href="#layanan">Layanan</a>
           </li>
+
           <li className="cursor-pointer hover:text-gray-400 transition">
-            Fitur
+            <a href="#fitur">Fitur</a>
           </li>
+
           <li className="cursor-pointer hover:text-gray-400 transition">
-            Kontak
+            <a href="#kontak">Kontak</a>
           </li>
+
+          {/* MASUK LINK */}
           <li className="cursor-pointer hover:text-gray-400 transition">
-            Masuk
+            <Link to="/login">Masuk</Link>
           </li>
         </ul>
+
         {/* Bottom Text */}
         <p className="text-center text-xs text-gray-400">
           © 2026 Rumah Impian. All rights reserved.
