@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 
 export default function Herosection() {
-  const [isOpen, setIsOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // mobile sidebar state (if needed)
 
   return (
     <section
@@ -14,96 +14,12 @@ export default function Herosection() {
       {/* ===== GRADIENT BACKGROUND ===== */}
       <div className="absolute inset-0 bg-linear-to-r from-[#048853] via-[#027346] to-[#002e22] z-0"></div>
 
-      {/* ===== LEFT DOTS ===== */}
+      {/* ===== LEFT DOTS / IMAGE ===== */}
       <img
         src="/Banner1.png"
         alt="left dots"
         className="absolute top-0 left-0 w-40 h-full sm:w-60 md:w-80 lg:w-72 2xl:w-96 z-10 pointer-events-none"
       />
-
-      {/* ================= NAVBAR ================= */}
-      <nav className="fixed top-0 left-0 w-full z-50">
-        {/* NAVBAR BACKGROUND */}
-        <div className="absolute inset-0 bg-linear-to-r from-[#048853] via-[#027346] to-[#002e22]"></div>
-
-        {/* DOT IMAGE */}
-        <img
-          src="/Banner1.png"
-          alt="dots"
-          className="absolute h-full max-w-425 pointer-events-none"
-        />
-
-        <div className="relative max-w-7xl 2xl:max-w-425 mx-auto px-4 sm:px-6 md:px-8 py-6 flex justify-between items-center">
-          {/* MOBILE LOGO */}
-          <div className="flex items-center gap-2 ml-3 lg:hidden">
-            <img
-              src="/Logo.svg"
-              alt="Rumah Impian Logo"
-              className="h-7 w-auto"
-            />
-            <span className="font-semibold text-[16px] tracking-wide">
-              Rumah Impian
-            </span>
-          </div>
-
-          {/* DESKTOP LOGO */}
-          <div className="hidden lg:flex items-center ml-6 gap-3">
-            <img
-              src="/Logo.svg"
-              alt="Rumah Impian Logo"
-              className="h-8 md:h-9 w-auto md:ml-20"
-            />
-            <span className="font-semibold text-[20px] md:text-lg tracking-wide">
-              Rumah Impian
-            </span>
-          </div>
-
-          {/* DESKTOP MENU */}
-          <ul className="hidden lg:flex gap-10 text-[16px] font-normal">
-            <a href="#beranda" className="font-semibold cursor-pointer">
-              BERANDA
-            </a>
-
-            <a
-              href="#layanan"
-              className="text-white/70 hover:text-white cursor-pointer"
-            >
-              LAYANAN
-            </a>
-
-            <a
-              href="#fitur"
-              className="text-white/70 hover:text-white cursor-pointer"
-            >
-              FITUR
-            </a>
-
-            <a
-              href="#kontak"
-              className="text-white/70 hover:text-white cursor-pointer"
-            >
-              KONTAK
-            </a>
-          </ul>
-
-          {/* DESKTOP BUTTONS */}
-          <div className="hidden lg:flex gap-6 text-sm items-center">
-            <button onClick={() => setShowRegister(true)}>DAFTAR</button>
-
-            <button
-              onClick={() => setShowLogin(true)}
-              className="bg-white text-[#147A55] px-6 py-2 font-semibold rounded-md"
-            >
-              MASUK
-            </button>
-          </div>
-
-          {/* MOBILE MENU BUTTON */}
-          <button className="lg:hidden" onClick={() => setIsOpen(true)}>
-            <Menu size={26} />
-          </button>
-        </div>
-      </nav>
 
       {/* ===== DESKTOP CONTENT ===== */}
       <div className="hidden lg:flex relative z-20 max-w-7xl 2xl:max-w-425 mx-auto px-4 sm:px-6 md:px-8 items-center min-h-[80vh] pt-32">
@@ -168,61 +84,6 @@ export default function Herosection() {
         alt="house"
         className="hidden lg:block absolute right-0 bottom-0 lg:h-[95%] 2xl:h-full lg:object-contain z-10"
       />
-
-      {/* ================= MOBILE SIDEBAR ================= */}
-      <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white text-[#147A55] z-50 transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between items-center px-6 py-5 border-b">
-          <span className="font-bold text-xl">Menu</span>
-          <button onClick={() => setIsOpen(false)}>
-            <X size={22} />
-          </button>
-        </div>
-
-        <div className="flex flex-col px-6 py-6 gap-6 text-base font-medium">
-          <a href="#beranda" onClick={() => setIsOpen(false)}>
-            BERANDA
-          </a>
-
-          <a href="#layanan" onClick={() => setIsOpen(false)}>
-            LAYANAN
-          </a>
-
-          <a href="#fitur" onClick={() => setIsOpen(false)}>
-            FITUR
-          </a>
-
-          <a href="#kontak" onClick={() => setIsOpen(false)}>
-            KONTAK
-          </a>
-
-          {/* MOBILE BUTTONS WITH EFFECTS */}
-          <div className="mt-6 flex flex-col gap-4">
-            <button
-              onClick={() => {
-                setShowRegister(true);
-                setIsOpen(false);
-              }}
-              className="border border-[#147A55] py-2 rounded-md transition-all duration-300 hover:bg-[#147A55] hover:text-white hover:scale-105 active:scale-95"
-            >
-              DAFTAR
-            </button>
-
-            <button
-              onClick={() => {
-                setShowLogin(true);
-                setIsOpen(false);
-              }}
-              className="bg-[#147A55] text-white py-2 rounded-md transition-all duration-300 hover:bg-[#0f6b4b] hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
-            >
-              MASUK
-            </button>
-          </div>
-        </div>
-      </div>
 
       {/* LOGIN MODAL */}
       {showLogin && (

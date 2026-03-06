@@ -6,15 +6,19 @@ import Searchhero from "./Searchhero.jsx";
 import RecommendationSection from "./RecommendationSection.jsx";
 import Slidersection from "./Slidersection.jsx";
 import Consultationsection from "./Consultationsection.jsx";
-import Footersection from "./Footersection.jsx";
+import Footersection from "./components/Footersection.jsx";
 import PropertyDetail from "./PropertyDetail";
 
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 function HomePage() {
   return (
     <>
+      {/* Navbar */}
+      <Navbar />
+
       {/* BERANDA */}
       <section id="beranda">
         <Herosection />
