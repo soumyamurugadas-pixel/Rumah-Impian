@@ -100,7 +100,7 @@ export default function Searchhero() {
         </div>
 
         {/* Search Box */}
-        <div className="bg-white/90 flex flex-col md:flex-row rounded-b-xl shadow-xl w-full relative">
+        <div className="bg-white/90 flex flex-col md:flex-row shadow-xl w-full relative">
           {/* Property Type */}
           <div className="relative md:w-64">
             <div
