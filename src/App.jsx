@@ -7,44 +7,39 @@ import RecommendationSection from "./RecommendationSection.jsx";
 import Slidersection from "./Slidersection.jsx";
 import Consultationsection from "./Consultationsection.jsx";
 import Footersection from "./components/Footersection.jsx";
-import PropertyDetail from "./PropertyDetail";
+import PropertyDetail from "./PropertyDetail.jsx";
 
-import Login from "./Login.jsx";
-import Register from "./Register.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 import Navbar from "./components/Navbar.jsx";
+import AuthPop from "./AuthPopup.jsx";
 
 function HomePage() {
   return (
     <>
-      {/* Navbar */}
       <Navbar />
+      <AuthPop />
 
-      {/* BERANDA */}
       <section id="beranda">
         <Herosection />
       </section>
 
-      {/* LAYANAN */}
       <section id="layanan">
         <Cardsection />
       </section>
 
-      {/* CARI RUMAH */}
       <section id="cari-rumah">
         <Searchhero />
       </section>
 
-      {/* REKOMENDASI */}
       <section id="Rekomendasi">
         <RecommendationSection />
       </section>
 
-      {/* FITUR */}
       <section id="fitur">
         <Slidersection />
       </section>
 
-      {/* KONTAK */}
       <section id="kontak">
         <Consultationsection />
         <Footersection />
@@ -56,19 +51,9 @@ function HomePage() {
 function App() {
   return (
     <Routes>
-      {/* Home Page */}
       <Route path="/" element={<HomePage />} />
-
-      {/* Login Page */}
       <Route path="/login" element={<Login />} />
-
-      {/* Register Page */}
       <Route path="/register" element={<Register />} />
-
-      {/* Home Page */}
-      <Route path="/" element={<RecommendationSection />} />
-
-      {/* Detail Page */}
       <Route path="/property/:id" element={<PropertyDetail />} />
     </Routes>
   );

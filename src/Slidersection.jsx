@@ -134,9 +134,11 @@ const Slidersection = () => {
               Fitur Rumah
             </h2>
 
-            <button className="bg-[#11875D] text-white px-5 py-2 text-sm font-medium hover:bg-[#0f6f4c] transition rounded">
-              Lihat Semua.. →
-            </button>
+            <a href="#fitur">
+              <button className="bg-[#11875D] text-white px-5 py-2 text-sm font-medium hover:bg-[#0f6f4c] transition rounded">
+                Lihat Semua.. →
+              </button>
+            </a>
           </div>
 
           <div className="relative">
@@ -168,12 +170,16 @@ const Slidersection = () => {
 
                     <div className="absolute inset-0 bg-black/60 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white text-center px-4">
                       <h3 className="text-lg font-semibold">{slide.title}</h3>
+
                       <p className="text-sm mt-1">{slide.desc}</p>
+
                       <p className="mt-2 font-semibold">{slide.price}</p>
 
-                      <button className="mt-4 bg-[#11875D] px-4 py-2 text-sm rounded hover:bg-[#0f6f4c] transition">
-                        Lihat Rumah
-                      </button>
+                      <a href="#fitur">
+                        <button className="mt-4 bg-[#11875D] px-4 py-2 text-sm rounded hover:bg-[#0f6f4c] transition">
+                          Lihat Rumah
+                        </button>
+                      </a>
                     </div>
                   </div>
                 ))}
@@ -223,12 +229,16 @@ const Slidersection = () => {
 
                   <div className="absolute inset-0 bg-black/50 rounded-lg flex flex-col justify-center items-center text-white text-center px-4">
                     <h3 className="text-lg font-semibold">{slide.title}</h3>
+
                     <p className="text-sm mt-1">{slide.desc}</p>
+
                     <p className="mt-2 font-semibold">{slide.price}</p>
 
-                    <button className="mt-4 bg-[#11875D] px-4 py-2 text-sm rounded">
-                      Lihat Rumah
-                    </button>
+                    <a href="#fitur">
+                      <button className="mt-4 bg-[#11875D] px-4 py-2 text-sm rounded hover:bg-[#0f6f4c] transition">
+                        Lihat Rumah
+                      </button>
+                    </a>
                   </div>
                 </div>
               ))}
