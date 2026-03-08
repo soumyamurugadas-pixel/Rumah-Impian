@@ -1,59 +1,25 @@
 import { useState } from "react";
 import { BedDouble, Bath, Maximize } from "lucide-react";
 import { Link } from "react-router-dom";
+import { properties } from "./Data/properties";
 
-const properties = [
-  {
-    id: 1,
-    image: "/house1.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-  },
-  {
-    id: 2,
-    image: "/house2.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Jual",
-  },
-  {
-    id: 3,
-    image: "/house3.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Property Baru",
-  },
-  {
-    id: 4,
-    image: "/house4.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-  },
-  {
-    id: 5,
-    image: "/house5.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-  },
-  {
-    id: 6,
-    image: "/house6.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-  },
-];
-
-export default function RecommendationSection() {
+export default function RecommendationSection({ filteredProperties }) {
   const [showAll, setShowAll] = useState(false);
 
-  const visibleProperties = showAll ? properties : properties.slice(0, 3);
+  const displayProperties =
+    filteredProperties && filteredProperties.length > 0
+      ? filteredProperties
+      : properties;
+
+  const visibleProperties = showAll
+    ? displayProperties
+    : displayProperties.slice(0, 3);
 
   return (
-    <section className="bg-[#E8F1EC] py-16 md:py-24 px-4 md:px-6">
+    <section
+      id="recommendation"
+      className="bg-[#E8F1EC] py-16 md:py-24 px-4 md:px-6"
+    >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-4xl font-semibold text-[#0E7A4F] text-center mb-10 md:mb-14">
           Rekomendasi Rumah Untuk Mu

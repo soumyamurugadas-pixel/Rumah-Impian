@@ -2,6 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footersection from "./components/Footersection";
 
+import { properties } from "./Data/properties";
+
 import {
   BedDouble,
   Bath,
@@ -12,79 +14,9 @@ import {
   User,
 } from "lucide-react";
 
-const properties = [
-  {
-    id: 1,
-    image: "/house1.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description:
-      "Beautiful modern house located in a peaceful residential area. Perfect for families looking for comfort and convenience with modern facilities.",
-  },
-  {
-    id: 2,
-    image: "/house2.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Jual",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description: "Luxury property with modern architecture and spacious rooms.",
-  },
-  {
-    id: 3,
-    image: "/house3.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Property Baru",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description: "Newly developed property offering stylish living spaces.",
-  },
-  {
-    id: 4,
-    image: "/house4.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description:
-      "Comfortable house with a beautiful garden and modern interior design.",
-  },
-  {
-    id: 5,
-    image: "/house5.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description: "Luxury villa with spacious rooms and elegant design.",
-  },
-  {
-    id: 6,
-    image: "/house6.png",
-    price: "IDR.200.000.000",
-    location: "JL. Soekarno Hatta No.1",
-    type: "Sewa",
-    beds: 3,
-    baths: 4,
-    area: "360m²",
-    description: "Modern house with premium facilities.",
-  },
-];
-
 export default function PropertyDetail() {
   const { id } = useParams();
+
   const property = properties.find((item) => item.id === parseInt(id));
 
   if (!property)
@@ -100,13 +32,10 @@ export default function PropertyDetail() {
 
   return (
     <>
-      {/* HEADER */}
       <Navbar />
 
-      {/* PROPERTY CONTENT */}
       <div className="bg-[#E8F1EC] min-h-screen py-10 sm:py-14 lg:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Back Button */}
           <Link
             to="/"
             className="text-[#147A55] font-medium mb-6 inline-block hover:underline"
@@ -114,18 +43,15 @@ export default function PropertyDetail() {
             ← Back to Home
           </Link>
 
-          {/* Property Image */}
           <div className="rounded-xl overflow-hidden shadow-lg">
             <img
               src={property.image}
               alt="property"
-              className="w-full h-62.5 sm:h-87.5 md:h-112.5 lg:h-130 object-cover"
+              className="w-full h-65 sm:h-87.5 md:h-112.5 lg:h-130 object-cover"
             />
           </div>
 
-          {/* MAIN GRID */}
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-10 mt-10">
-            {/* LEFT CONTENT */}
             <div className="lg:col-span-2 bg-white p-5 sm:p-8 rounded-xl shadow-md">
               <h1 className="text-2xl sm:text-3xl font-bold text-[#147A55]">
                 {property.price}
@@ -140,34 +66,26 @@ export default function PropertyDetail() {
                 {property.type}
               </span>
 
-              {/* FEATURES */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-8 text-center">
                 <div className="bg-[#E8F1EC] p-3 sm:p-4 rounded-lg">
                   <BedDouble className="mx-auto text-[#147A55]" />
-                  <p className="font-semibold mt-2 text-sm sm:text-base">
-                    {property.beds}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-500">Bedrooms</p>
+                  <p className="font-semibold mt-2">{property.beds}</p>
+                  <p className="text-xs text-gray-500">Bedrooms</p>
                 </div>
 
                 <div className="bg-[#E8F1EC] p-3 sm:p-4 rounded-lg">
                   <Bath className="mx-auto text-[#147A55]" />
-                  <p className="font-semibold mt-2 text-sm sm:text-base">
-                    {property.baths}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-500">Bathrooms</p>
+                  <p className="font-semibold mt-2">{property.baths}</p>
+                  <p className="text-xs text-gray-500">Bathrooms</p>
                 </div>
 
                 <div className="bg-[#E8F1EC] p-3 sm:p-4 rounded-lg">
                   <Maximize className="mx-auto text-[#147A55]" />
-                  <p className="font-semibold mt-2 text-sm sm:text-base">
-                    {property.area}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-500">Area</p>
+                  <p className="font-semibold mt-2">{property.area}</p>
+                  <p className="text-xs text-gray-500">Area</p>
                 </div>
               </div>
 
-              {/* DESCRIPTION */}
               <div className="mt-10">
                 <h2 className="text-lg sm:text-xl font-semibold text-[#147A55] mb-3">
                   Property Description
@@ -178,13 +96,12 @@ export default function PropertyDetail() {
                 </p>
               </div>
 
-              {/* INTERIOR FEATURES */}
               <div className="mt-10">
                 <h2 className="text-lg sm:text-xl font-semibold text-[#147A55] mb-4">
                   Interior Features
                 </h2>
 
-                <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm sm:text-base">
+                <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm">
                   <li>• Modern Kitchen</li>
                   <li>• Air Conditioning</li>
                   <li>• Walk-in Closet</li>
@@ -194,13 +111,12 @@ export default function PropertyDetail() {
                 </ul>
               </div>
 
-              {/* EXTERIOR FEATURES */}
               <div className="mt-10">
                 <h2 className="text-lg sm:text-xl font-semibold text-[#147A55] mb-4">
                   Exterior Features
                 </h2>
 
-                <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm sm:text-base">
+                <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm">
                   <li>• Private Garden</li>
                   <li>• Parking Garage</li>
                   <li>• Security System</li>
@@ -210,7 +126,6 @@ export default function PropertyDetail() {
                 </ul>
               </div>
 
-              {/* GOOGLE MAP */}
               <div className="mt-10">
                 <h2 className="text-lg sm:text-xl font-semibold text-[#147A55] mb-4">
                   Property Location
@@ -225,13 +140,11 @@ export default function PropertyDetail() {
               </div>
             </div>
 
-            {/* AGENT CARD */}
             <div className="bg-white p-6 rounded-xl shadow-md h-fit">
               <h3 className="text-lg font-semibold text-[#147A55] mb-4">
                 Contact Agent
               </h3>
 
-              {/* Agent Icon */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 flex items-center justify-center bg-[#E8F1EC] rounded-full">
                   <User size={26} className="text-[#147A55]" />
@@ -243,7 +156,6 @@ export default function PropertyDetail() {
                 </div>
               </div>
 
-              {/* CALL BUTTON */}
               <a href="tel:+60102449030">
                 <button className="w-full flex items-center justify-center gap-2 bg-[#147A55] text-white py-3 rounded-lg hover:bg-[#0C6B45] transition">
                   <Phone size={18} />
@@ -251,7 +163,6 @@ export default function PropertyDetail() {
                 </button>
               </a>
 
-              {/* EMAIL BUTTON */}
               <a href="mailto:agent@propertyexample.com">
                 <button className="w-full flex items-center justify-center gap-2 border border-[#147A55] text-[#147A55] py-3 rounded-lg mt-3 hover:bg-[#E8F1EC] transition">
                   <Mail size={18} />
@@ -263,7 +174,6 @@ export default function PropertyDetail() {
         </div>
       </div>
 
-      {/* FOOTER */}
       <Footersection />
     </>
   );

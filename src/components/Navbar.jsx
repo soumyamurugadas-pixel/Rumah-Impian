@@ -56,7 +56,7 @@ export default function Navbar() {
         <img
           src="/Banner1.png"
           alt="dots"
-          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          className="absolute inset-0 h-full min-w-auto object-cover pointer-events-none"
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 flex justify-between items-center">

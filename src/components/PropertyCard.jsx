@@ -1,38 +1,28 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function PropertyCard({ property }) {
+function PropertyCard({ property }) {
+  const navigate = useNavigate();
+
   return (
-    <Link to={`/property/${property.id}`}>
-      <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-        <img src={property.image} alt="" className="w-full h-56 object-cover" />
+    <div
+      className="card cursor-pointer"
+      onClick={() => navigate(`/property/${property.id}`)}
+    >
+      <img src={property.image} alt={property.title} />
 
-        <div className="p-5">
-          <h2 className="text-xl font-bold">{property.price}</h2>
+      <h3>IDR {property.price.toLocaleString()}</h3>
 
-          <p className="text-gray-500 text-sm mt-1">{property.address}</p>
+      <p>{property.location}</p>
 
-          <p className="text-red-500 mt-1">{property.type}</p>
+      <span style={{ color: "red" }}>{property.status}</span>
 
-          <hr className="my-4" />
-
-          <div className="flex justify-between text-center">
-            <div>
-              <p className="font-bold">{property.beds}</p>
-              <p className="text-sm">Kamar Tidur</p>
-            </div>
-
-            <div>
-              <p className="font-bold">{property.baths}</p>
-              <p className="text-sm">Kamar Mandi</p>
-            </div>
-
-            <div>
-              <p className="font-bold">{property.area}</p>
-              <p className="text-sm">Luas Rumah</p>
-            </div>
-          </div>
-        </div>
+      <div className="details">
+        <p>{property.bedrooms} Kamar Tidur</p>
+        <p>{property.bathrooms} Kamar Mandi</p>
+        <p>{property.size} m²</p>
       </div>
-    </Link>
+    </div>
   );
 }
+
+export default PropertyCard;

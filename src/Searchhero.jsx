@@ -5,8 +5,12 @@ import {
   FaChevronDown,
   FaSearch,
 } from "react-icons/fa";
+import { properties } from "./Data/properties";
+import { useNavigate } from "react-router-dom";
 
 export default function Searchhero() {
+  const navigate = useNavigate();
+
   const [activeTab, setActiveTab] = useState("Jual");
   const [searchText, setSearchText] = useState("");
 
@@ -40,20 +44,49 @@ export default function Searchhero() {
     "$1.20m",
   ];
 
+  // convert label price to number
+  const convertPrice = (price) => {
+    if (!price) return 0;
+
+    const value = Number(price.replace(/[^0-9.]/g, ""));
+    return price.toLowerCase().includes("m") ? value * 1000000 : value * 1000;
+  };
+
+  const handleSearch = () => {
+    const min = convertPrice(minPrice);
+    const max = maxPrice ? convertPrice(maxPrice) : Infinity;
+
+    const results = properties.filter((item) => {
+      const matchTab = item.category === activeTab;
+
+      const matchLocation =
+        searchText === "" ||
+        item.location.toLowerCase().includes(searchText.toLowerCase());
+
+      const matchType =
+        selectedType === "Tipe Rumah" || item.type === selectedType;
+
+      const matchPrice = item.price >= min && item.price <= max;
+
+      return matchTab && matchLocation && matchType && matchPrice;
+    });
+
+    navigate("/search-results", {
+      state: { results },
+    });
+  };
+
   const priceLabel =
     minPrice || maxPrice
       ? `${minPrice || "No Min"} - ${maxPrice || "No Max"}`
       : "Range Harga";
-
-  const handleSearch = () => {
-    console.log(activeTab, selectedType, minPrice, maxPrice, searchText);
-  };
 
   const handlePriceSelect = (price) => {
     if (!minPrice) {
       setMinPrice(price);
     } else if (!maxPrice) {
       setMaxPrice(price);
+      setShowPrice(false);
     } else {
       setMinPrice(price);
       setMaxPrice("");
@@ -66,7 +99,7 @@ export default function Searchhero() {
       style={{ backgroundImage: "url('/livingroom.jpg')" }}
     >
       <div className="relative z-10 w-full max-w-7xl">
-        {/* Heading */}
+        {/* TITLE */}
         <div className="text-center text-white mb-10">
           <h1 className="font-semibold leading-tight text-[clamp(28px,5vw,64px)] mb-4">
             Temukan Rumah Impianmu
@@ -78,7 +111,7 @@ export default function Searchhero() {
           </p>
         </div>
 
-        {/* Tabs */}
+        {/* TABS */}
         <div className="flex justify-center md:justify-start">
           <div className="flex rounded-t-xl overflow-hidden shadow-lg w-full max-w-md">
             {tabs.map((tab, index) => (
@@ -99,9 +132,9 @@ export default function Searchhero() {
           </div>
         </div>
 
-        {/* Search Box */}
+        {/* SEARCH BOX */}
         <div className="bg-white/90 flex flex-col md:flex-row shadow-xl w-full relative">
-          {/* Property Type */}
+          {/* TYPE */}
           <div className="relative md:w-64">
             <div
               onClick={() => {
@@ -114,12 +147,7 @@ export default function Searchhero() {
                 <FaHome />
                 <span className="text-[15px] font-medium">{selectedType}</span>
               </div>
-
-              <FaChevronDown
-                className={`transition-transform ${
-                  showType ? "rotate-180" : ""
-                }`}
-              />
+              <FaChevronDown />
             </div>
 
             {showType && (
@@ -131,7 +159,7 @@ export default function Searchhero() {
                       setSelectedType(option);
                       setShowType(false);
                     }}
-                    className="px-5 py-3 text-[15px] font-medium text-[#0E7A4F] hover:bg-gray-100 hover:pl-6 transition-all duration-200 cursor-pointer"
+                    className="px-5 py-3 hover:bg-gray-100 cursor-pointer"
                   >
                     {option}
                   </div>
@@ -140,7 +168,7 @@ export default function Searchhero() {
             )}
           </div>
 
-          {/* Price */}
+          {/* PRICE */}
           <div className="relative md:w-64 border-x border-white">
             <div
               onClick={() => {
@@ -151,44 +179,38 @@ export default function Searchhero() {
             >
               <div className="flex items-center gap-2">
                 <FaMoneyBillWave />
-                <span className="text-[15px] font-medium">{priceLabel}</span>
+                <span>{priceLabel}</span>
               </div>
 
-              <FaChevronDown
-                className={`transition-transform ${
-                  showPrice ? "rotate-180" : ""
-                }`}
-              />
+              <FaChevronDown />
             </div>
 
             {showPrice && (
               <div className="absolute left-0 top-full w-full bg-white shadow-xl rounded-b-lg p-4 z-40">
-                {/* Min Max */}
                 <div className="flex gap-3 mb-4">
                   <input
                     type="text"
-                    placeholder="Min"
                     value={minPrice}
+                    placeholder="Min"
                     readOnly
-                    className="border p-2 w-1/2 rounded text-[14px] font-medium text-[#0E7A4F]"
+                    className="border p-2 w-1/2 rounded"
                   />
 
                   <input
                     type="text"
-                    placeholder="Max"
                     value={maxPrice}
+                    placeholder="Max"
                     readOnly
-                    className="border p-2 w-1/2 rounded text-[14px] font-medium text-[#0E7A4F]"
+                    className="border p-2 w-1/2 rounded"
                   />
                 </div>
 
-                {/* Price List */}
                 <div className="max-h-48 overflow-y-auto">
                   {priceOptions.map((price) => (
                     <div
                       key={price}
                       onClick={() => handlePriceSelect(price)}
-                      className="px-4 py-2 text-[14px] font-medium text-[#0E7A4F] hover:bg-gray-100 hover:pl-6 transition-all duration-200 cursor-pointer"
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
                       {price}
                     </div>
@@ -198,7 +220,7 @@ export default function Searchhero() {
             )}
           </div>
 
-          {/* Search */}
+          {/* LOCATION */}
           <div className="flex-1 flex items-center px-5 py-4 relative">
             <FaSearch className="absolute left-5 text-[#0E7A4F]/70" />
 
@@ -206,15 +228,15 @@ export default function Searchhero() {
               type="text"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              placeholder={`Cari ${activeTab} berdasarkan lokasi, ID, Property`}
-              className="w-full pl-8 outline-none text-[15px] rounded-md px-3 py-2 placeholder:text-[#0E7A4F]/70"
+              placeholder={`Cari ${activeTab} berdasarkan lokasi`}
+              className="w-full pl-8 outline-none"
             />
           </div>
 
-          {/* Button */}
+          {/* BUTTON */}
           <button
             onClick={handleSearch}
-            className="bg-[#0E7A4F] text-white px-8 py-4 font-medium text-[15px]"
+            className="bg-[#0E7A4F] text-white px-8 py-4"
           >
             Cari
           </button>
