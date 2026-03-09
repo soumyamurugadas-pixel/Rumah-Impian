@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 import { properties } from "./Data/properties.js";
 
 import Herosection from "./Herosection.jsx";
