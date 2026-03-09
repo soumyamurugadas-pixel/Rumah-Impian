@@ -13,14 +13,21 @@ import Footersection from "./components/Footersection.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
-import SearchResults from "./components/SearchResults.jsx";
 
 import AuthPop from "./AuthPopup.jsx";
 import Property from "./Property.jsx";
 import PropertyDetail from "./PropertyDetail.jsx";
+import HandleSearch from "./Handlesearch.jsx";
 
 function HomePage() {
-  const [filteredProperties, setFilteredProperties] = useState(properties);
+  const [filteredProperties, setFilteredProperties] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+
+  // ⭐ THIS IS THE HANDLE SEARCH FUNCTION
+  const handleSearch = (results) => {
+    setFilteredProperties(results);
+    setHasSearched(true);
+  };
 
   return (
     <>
@@ -35,12 +42,17 @@ function HomePage() {
         <Cardsection />
       </section>
 
+      {/* Search Section */}
       <section id="cari-rumah">
-        <Searchhero onSearch={setFilteredProperties} />
+        <Searchhero onSearch={handleSearch} />
       </section>
 
-      <section id="Rekomendasi">
-        <RecommendationSection filteredProperties={filteredProperties} />
+      {/* Recommendation Section */}
+      <section id="rekomendasi">
+        <RecommendationSection
+          filteredProperties={filteredProperties}
+          hasSearched={hasSearched}
+        />
       </section>
 
       <section id="fitur">
@@ -59,11 +71,14 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+
       <Route path="/login" element={<Login />} />
+
       <Route path="/register" element={<Register />} />
+
       <Route path="/property/:id" element={<PropertyDetail />} />
+
       <Route path="/property" element={<Property />} />
-      <Route path="/search-results" element={<SearchResults />} />
     </Routes>
   );
 }
