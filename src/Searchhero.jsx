@@ -51,7 +51,7 @@ export default function SearchHero({ onSearch }) {
     const min = convertPrice(minPrice);
     const max = maxPrice ? convertPrice(maxPrice) : Infinity;
 
-    // ----- KEYWORD PARSING (sequential removal to avoid overlap) -----
+    // ----- KEYWORD PARSING -----
     let remainingText = searchText.toLowerCase();
     let bedFilter = null;
     let bathFilter = null;
@@ -84,10 +84,12 @@ export default function SearchHero({ onSearch }) {
       remainingText = remainingText.replace(areaMatch[0], "").trim();
     }
 
-    // Remaining text is used for location search
-    const locationText = remainingText;
+    // Get all search words (for partial matching)
+    const searchWords = remainingText
+      .split(/\s+/)
+      .filter((word) => word.length > 0);
 
-    // Debug logs – open browser console (F12) to see these
+    // Debug logs
     console.log("🔍 SEARCH PARAMETERS");
     console.log("Active tab:", activeTab);
     console.log("Selected type:", selectedType);
@@ -96,10 +98,7 @@ export default function SearchHero({ onSearch }) {
     console.log("Bed filter:", bedFilter);
     console.log("Bath filter:", bathFilter);
     console.log("Area filter:", areaFilter);
-    console.log(
-      "Location text after keyword removal:",
-      locationText || "(none)",
-    );
+    console.log("Search words:", searchWords);
     console.log("Total properties in database:", allProperties.length);
 
     const results = allProperties.filter((item) => {
@@ -111,23 +110,39 @@ export default function SearchHero({ onSearch }) {
         selectedType === "Tipe Rumah" || item.type === selectedType;
       const matchPrice = itemPrice >= min && itemPrice <= max;
 
-      // Location filter (if any text remains after keyword removal)
-      const matchLocation =
-        !locationText || item.location.toLowerCase().includes(locationText);
-
       // Keyword filters (only if specified)
       const matchBed = bedFilter === null || item.beds === bedFilter;
       const matchBath = bathFilter === null || item.baths === bathFilter;
       const matchArea = areaFilter === null || item.area === areaFilter;
 
+      // Text search - check if ALL search words appear in any of these fields
+      const matchText =
+        searchWords.length === 0 ||
+        searchWords.every((word) => {
+          // Check in location
+          if (item.location.toLowerCase().includes(word)) return true;
+
+          // Check in type
+          if (item.type.toLowerCase().includes(word)) return true;
+
+          // Check in features array if it exists
+          if (item.features && Array.isArray(item.features)) {
+            return item.features.some((feature) =>
+              feature.toLowerCase().includes(word),
+            );
+          }
+
+          return false;
+        });
+
       return (
         matchTab &&
         matchType &&
         matchPrice &&
-        matchLocation &&
         matchBed &&
         matchBath &&
-        matchArea
+        matchArea &&
+        matchText
       );
     });
 
@@ -280,13 +295,13 @@ export default function SearchHero({ onSearch }) {
             )}
           </div>
 
-          {/* Location Input */}
+          {/* Search Input */}
           <div className="flex-1 flex items-center px-5 py-4 relative">
             <input
               type="text"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              placeholder={`Cari ${activeTab} berdasarkan lokasi`}
+              placeholder={`Cari berdasarkan lokasi atau fitur (contoh: LED, Pool, Garden, dll)`}
               className="w-full pl-3 outline-none"
             />
           </div>

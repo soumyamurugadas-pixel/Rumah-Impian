@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { properties } from "./Data/properties.js";
 
 import Herosection from "./Herosection.jsx";
 import Cardsection from "./Cardsection.jsx";

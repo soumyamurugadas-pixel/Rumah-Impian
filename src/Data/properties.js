@@ -10,6 +10,15 @@ export const properties = [
     beds: 3,
     baths: 4,
     area: 360,
+    description:
+      "Rumah minimalis modern dengan desain简约 dan fungsional, cocok untuk keluarga kecil.",
+    features: [
+      "Modern Kitchen",
+      "LED Lighting",
+      "Balcony",
+      "Parking Garage",
+      "Wooden Flooring",
+    ],
   },
   {
     id: 2,
@@ -21,6 +30,15 @@ export const properties = [
     beds: 4,
     baths: 3,
     area: 420,
+    description:
+      "Rumah modern dengan arsitektur kontemporer dan ruangan yang luas.",
+    features: [
+      "Air Conditioning",
+      "Smart Home System",
+      "Security System",
+      "Private Garden",
+      "Walk-in Closet",
+    ],
   },
   {
     id: 3,
@@ -32,6 +50,16 @@ export const properties = [
     beds: 5,
     baths: 5,
     area: 500,
+    description: "Rumah mewah dengan fasilitas premium dan desain elegan.",
+    features: [
+      "Swimming Pool",
+      "Smart Home System",
+      "Walk-in Closet",
+      "Private Garden",
+      "Security System",
+      "Outdoor Lighting",
+      "Modern Kitchen",
+    ],
   },
   {
     id: 4,
@@ -43,6 +71,13 @@ export const properties = [
     beds: 2,
     baths: 2,
     area: 120,
+    description: "Apartemen modern dengan pemandangan kota yang indah.",
+    features: [
+      "Air Conditioning",
+      "LED Lighting",
+      "Balcony",
+      "Security System",
+    ],
   },
   {
     id: 5,
@@ -54,6 +89,15 @@ export const properties = [
     beds: 4,
     baths: 3,
     area: 450,
+    description:
+      "Villa dengan suasana asri dan pemandangan alam yang menakjubkan.",
+    features: [
+      "Private Garden",
+      "Swimming Pool",
+      "Outdoor Lighting",
+      "Parking Garage",
+      "Modern Kitchen",
+    ],
   },
 
   // SEWA
@@ -67,6 +111,8 @@ export const properties = [
     beds: 3,
     baths: 4,
     area: 360,
+    description: "Rumah minimalis nyaman untuk disewa dengan lokasi strategis.",
+    features: ["LED Lighting", "Balcony", "Parking Garage"],
   },
   {
     id: 7,
@@ -78,6 +124,13 @@ export const properties = [
     beds: 3,
     baths: 3,
     area: 380,
+    description: "Rumah modern dengan interior stylish dan nyaman.",
+    features: [
+      "Air Conditioning",
+      "Wooden Flooring",
+      "Security System",
+      "Modern Kitchen",
+    ],
   },
   {
     id: 8,
@@ -89,6 +142,15 @@ export const properties = [
     beds: 4,
     baths: 4,
     area: 430,
+    description:
+      "Rumah mewah dengan fasilitas lengkap untuk kenyamanan maksimal.",
+    features: [
+      "Swimming Pool",
+      "Smart Home System",
+      "Walk-in Closet",
+      "Private Garden",
+      "Outdoor Lighting",
+    ],
   },
   {
     id: 9,
@@ -100,6 +162,8 @@ export const properties = [
     beds: 2,
     baths: 1,
     area: 90,
+    description: "Apartemen cozy cocok untuk pekerja atau mahasiswa.",
+    features: ["Air Conditioning", "LED Lighting", "Balcony"],
   },
   {
     id: 10,
@@ -111,6 +175,14 @@ export const properties = [
     beds: 4,
     baths: 4,
     area: 500,
+    description: "Villa mewah dengan pemandangan indah untuk liburan.",
+    features: [
+      "Private Garden",
+      "Swimming Pool",
+      "Outdoor Lighting",
+      "Parking Garage",
+      "Modern Kitchen",
+    ],
   },
 
   // PROPERTY BARU
@@ -124,6 +196,13 @@ export const properties = [
     beds: 3,
     baths: 3,
     area: 340,
+    description: "Property baru dengan desain minimalis modern.",
+    features: [
+      "Modern Kitchen",
+      "LED Lighting",
+      "Parking Garage",
+      "Wooden Flooring",
+    ],
   },
   {
     id: 12,
@@ -135,6 +214,13 @@ export const properties = [
     beds: 4,
     baths: 4,
     area: 410,
+    description: "Property baru dengan teknologi smart home terintegrasi.",
+    features: [
+      "Smart Home System",
+      "Air Conditioning",
+      "Security System",
+      "Walk-in Closet",
+    ],
   },
   {
     id: 13,
@@ -146,6 +232,15 @@ export const properties = [
     beds: 5,
     baths: 5,
     area: 550,
+    description: "Property baru mewah dengan semua fasilitas premium.",
+    features: [
+      "Swimming Pool",
+      "Private Garden",
+      "Smart Home System",
+      "Walk-in Closet",
+      "Outdoor Lighting",
+      "Modern Kitchen",
+    ],
   },
   {
     id: 14,
@@ -157,6 +252,13 @@ export const properties = [
     beds: 2,
     baths: 2,
     area: 110,
+    description: "Apartemen baru dengan view kota yang spectacular.",
+    features: [
+      "Air Conditioning",
+      "LED Lighting",
+      "Balcony",
+      "Security System",
+    ],
   },
   {
     id: 15,
@@ -168,5 +270,13 @@ export const properties = [
     beds: 4,
     baths: 4,
     area: 480,
+    description: "Villa baru dengan desain tropis modern.",
+    features: [
+      "Private Garden",
+      "Swimming Pool",
+      "Outdoor Lighting",
+      "Parking Garage",
+      "Modern Kitchen",
+    ],
   },
 ];

@@ -19,6 +19,60 @@ export default function PropertyDetail() {
 
   const property = properties.find((item) => item.id === parseInt(id));
 
+  // Default features if property.features doesn't exist
+  const interiorFeatures = [
+    "Modern Kitchen",
+    "Air Conditioning",
+    "Walk-in Closet",
+    "Smart Home System",
+    "Wooden Flooring",
+    "LED Lighting",
+  ];
+
+  const exteriorFeatures = [
+    "Private Garden",
+    "Parking Garage",
+    "Security System",
+    "Swimming Pool",
+    "Balcony",
+    "Outdoor Lighting",
+  ];
+
+  // If property has features array, split them into interior/exterior
+  // This is a simple way - you could also store interior/exterior separately in your data
+  const getInteriorFeatures = () => {
+    if (!property.features) return interiorFeatures;
+
+    // You can define which features are interior vs exterior
+    const interiorKeywords = [
+      "Kitchen",
+      "Closet",
+      "Flooring",
+      "Lighting",
+      "Air",
+      "Smart",
+    ];
+    return property.features.filter((feature) =>
+      interiorKeywords.some((keyword) => feature.includes(keyword)),
+    );
+  };
+
+  const getExteriorFeatures = () => {
+    if (!property.features) return exteriorFeatures;
+
+    const exteriorKeywords = [
+      "Garden",
+      "Parking",
+      "Security",
+      "Pool",
+      "Balcony",
+      "Outdoor",
+    ];
+    return property.features.filter((feature) =>
+      exteriorKeywords.some((keyword) => feature.includes(keyword)),
+    );
+  };
+
   if (!property)
     return (
       <>
@@ -54,7 +108,7 @@ export default function PropertyDetail() {
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-10 mt-10">
             <div className="lg:col-span-2 bg-white p-5 sm:p-8 rounded-xl shadow-md">
               <h1 className="text-2xl sm:text-3xl font-bold text-[#147A55]">
-                {property.price}
+                Rp {property.price.toLocaleString("id-ID")}
               </h1>
 
               <p className="text-gray-500 mt-2 flex items-center gap-2 text-sm sm:text-base">
@@ -81,7 +135,7 @@ export default function PropertyDetail() {
 
                 <div className="bg-[#E8F1EC] p-3 sm:p-4 rounded-lg">
                   <Maximize className="mx-auto text-[#147A55]" />
-                  <p className="font-semibold mt-2">{property.area}</p>
+                  <p className="font-semibold mt-2">{property.area} m²</p>
                   <p className="text-xs text-gray-500">Area</p>
                 </div>
               </div>
@@ -92,7 +146,8 @@ export default function PropertyDetail() {
                 </h2>
 
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                  {property.description}
+                  {property.description ||
+                    "Beautiful property with modern amenities and excellent location. Perfect for families looking for comfort and convenience."}
                 </p>
               </div>
 
@@ -102,12 +157,9 @@ export default function PropertyDetail() {
                 </h2>
 
                 <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm">
-                  <li>• Modern Kitchen</li>
-                  <li>• Air Conditioning</li>
-                  <li>• Walk-in Closet</li>
-                  <li>• Smart Home System</li>
-                  <li>• Wooden Flooring</li>
-                  <li>• LED Lighting</li>
+                  {getInteriorFeatures().map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -117,12 +169,9 @@ export default function PropertyDetail() {
                 </h2>
 
                 <ul className="grid sm:grid-cols-2 gap-3 text-gray-600 text-sm">
-                  <li>• Private Garden</li>
-                  <li>• Parking Garage</li>
-                  <li>• Security System</li>
-                  <li>• Swimming Pool</li>
-                  <li>• Balcony</li>
-                  <li>• Outdoor Lighting</li>
+                  {getExteriorFeatures().map((feature, index) => (
+                    <li key={index}>• {feature}</li>
+                  ))}
                 </ul>
               </div>
 
